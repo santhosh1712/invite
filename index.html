@@ -302,6 +302,10 @@
             margin-top: 30vh;
         }
 
+        .venue-card .lead span {
+            display: block;
+        }
+
         .section-title {
             font-size: 2.5rem;
             text-align: center;
@@ -651,6 +655,29 @@
         /* Media Queries - Mobile Optimization */
         @media (max-width: 768px) {
 
+            .venue-card {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .venue-card.cta .btn-gold {
+                width: 250px;
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(5px);
+            }
+
+            #venue {
+                padding: 100px 0;
+            }
+
+            .venue-card.cta {
+                padding: 20px;
+                margin: 20px;
+                background: none;
+                border: 0;
+                backdrop-filter: blur(0);
+            }
+
             /* Global Layout Adjustments */
             section {
                 padding: 3rem 0;
@@ -870,7 +897,8 @@
         <div class="container hero-content">
             <h1 class="hero-title animate-on-load">Santhosh & Vaishnavi</h1>
             <h2 class="hero-subtitle animate-on-load" style="animation-delay: 0.3s;">Together, We Begin.</h2>
-            <p class="hero-date animate-on-load" style="animation-delay: 0.3s;">Officially Going Live: March 5th, 2026
+            <p class="hero-date animate-on-load" style="animation-delay: 0.3s;">Officially Going Live: <br><strong>March
+                    5th, 2026</strong>
             </p>
             <a href="#story" class="d-none btn btn-gold rounded-pill animate-on-load" style="animation-delay: 0.6s;">
                 Enter Our Wedding Story &nbsp;<i class="fas fa-arrow-down"></i>
@@ -1001,7 +1029,8 @@
             <div class="venue-card animate-on-load">
                 <h1 class="text-gold mb-2 pt-3" style="font-family: 'Great Vibes', cursive; font-size: 3.5rem;">
                     Sumangali Mahal</h1>
-                <p class="lead mb-3">S.P.H Road, Melnallathur ( Opp. Caterpillar Gate 3 ) Thiruvallur - 602002</p>
+                <p class="lead mb-3">S.P.H Road, Melnallathur <span class="">( Opp. Caterpillar Gate 3 )</span>
+                    Thiruvallur - 602002</p>
 
 
             </div>

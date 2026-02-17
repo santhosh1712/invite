@@ -18,852 +18,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-    <style>
-        :root {
-            --primary-gold: #d4af37;
-            --secondary-gold: #c5a028;
-            --bg-dark: #0a0a0a;
-            --bg-card: rgba(255, 255, 255, 0.05);
-            --text-light: #fdfdfd;
-            --text-muted: #b0b0b0;
-            --glass-blur: 10px;
-            --transition-speed: 0.4s;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Montserrat', sans-serif;
-        }
-
-        /* Base Styles */
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: var(--font-sans);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: var(--font-serif);
-            color: var(--primary-gold);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-gold);
-            border-radius: 4px;
-        }
-
-        /* Cursor */
-        .cursor-dot,
-        .cursor-circle {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-        }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary-gold);
-        }
-
-        .cursor-circle {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--primary-gold);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-
-        .cursor-hover {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(212, 175, 55, 0.1);
-            border-color: transparent;
-        }
-
-        /* Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--primary-gold);
-            width: 0%;
-            z-index: 10000;
-            transition: width 0.1s;
-        }
-
-        /* Navbar */
-        .navbar {
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(var(--glass-blur));
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-brand {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            color: var(--primary-gold) !important;
-            font-weight: 700;
-        }
-
-        .nav-link {
-            color: var(--text-light) !important;
-            font-weight: 500;
-            margin-left: 1rem;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-gold);
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--primary-gold) !important;
-        }
-
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: end;
-            justify-content: center;
-            text-align: center;
-            background: url('siteassets/img/banner.JPG');
-            /* User provided image */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        /* Dark Gradient Overlay */
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 2rem;
-        }
-
-        .hero-title {
-
-            font-family: great vibes;
-            font-size: 4rem;
-            font-weight: 500;
-            text-shadow: 2px 2px 2px #000;
-            margin-bottom: 0.5rem;
-            letter-spacing: 5px;
-            text-transform: capitalize;
-            opacity: 0;
-            transform: translateY(30px);
-
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            font-family: 'Playwrite AT', cursive;
-            font-weight: 300;
-            font-style: italic;
-            color: var(--primary-gold);
-            margin-bottom: 1rem;
-            opacity: 0;
-            /* JS Animation */
-            transform: translateY(30px);
-        }
-
-        .hero-date {
-            font-size: 1.5rem;
-            font-family: var(--font-sans);
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            color: var(--text-muted);
-            opacity: 0;
-            /* JS Animation */
-            transform: translateY(30px);
-        }
-
-        .btn-gold {
-            background: transparent;
-            color: var(--primary-gold);
-            border: 2px solid var(--primary-gold);
-            padding: 12px 30px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            font-weight: 700;
-        }
-
-        .btn-gold::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-gold);
-            transition: all 0.3s ease;
-            z-index: -1;
-        }
-
-        .btn-gold:hover::before {
-            left: 0;
-        }
-
-        .btn-gold:hover {
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-        }
-
-        /* Section Global Styles */
-        section {
-            padding: 5rem 0;
-            position: relative;
-            border-bottom: 15px solid #d4af377a;
-        }
-
-        #story {
-            background: linear-gradient(rgba(10, 10, 10, 0.25), rgba(10, 10, 10, 0.85)), url('siteassets/img/timeline.JPG');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-        }
-
-        #venue {
-            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('siteassets/img/Mahal.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #fff;
-        }
-
-        .venue-card {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            border: 1px solid var(--primary-gold);
-            border-radius: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .venue-card.cta {
-            margin-top: 30vh;
-        }
-
-        .venue-card .lead span {
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-gold);
-            margin: 10px auto 0;
-        }
-
-        /* Timeline Section */
-        .timeline {
-            position: relative;
-            max-width: 900px;
-
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: rgba(212, 175, 55, 0.3);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .timeline-item.left {
-            left: 0;
-            text-align: right;
-        }
-
-        .timeline-item.right {
-            left: 50%;
-            text-align: left;
-        }
-
-        .timeline-icon {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            right: -20px;
-            background-color: var(--bg-dark);
-            border: 2px solid var(--primary-gold);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-gold);
-        }
-
-        .right .timeline-icon {
-            left: -20px;
-        }
-
-        .timeline-content {
-            padding: 20px;
-            background: var(--bg-card);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .timeline-date {
-            font-size: 0.9rem;
-            color: var(--primary-gold);
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        /* 3D Invitation Card */
-        #invite {
-            overflow: hidden;
-            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.5), rgba(21, 21, 21, 0.8)), url("siteassets/img/invi-bg.jpg");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .zodiac {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        .zodiac.left {
-            left: 5%;
-        }
-
-        .zodiac.right {
-            right: 5%;
-        }
-
-        .zodiac img {
-            height: 300px;
-            width: auto;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .flip-card {
-            background-color: transparent;
-            width: 350px;
-            height: 500px;
-            perspective: 1000px;
-            margin: 0 auto;
-            cursor: pointer;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front,
-        .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2.5rem;
-            border-radius: 20px;
-            /* Grand Design: Richer Gradient + Double Border Effect */
-            background: linear-gradient(135deg, #000000, #1c1c1c);
-            border: 2px solid var(--primary-gold);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.9);
-            overflow: hidden;
-            /* Ensure inner frame stays inside */
-        }
-
-        /* Inner Ornamental Frame for Grand Look */
-        .flip-card-front::after,
-        .flip-card-back::after {
-            content: '';
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
-            bottom: 12px;
-            border: 2px solid rgba(212, 175, 55, 0.6);
-
-            border-radius: 15px;
-            pointer-events: none;
-        }
-
-        .flip-card-back {
-            transform: rotateY(180deg);
-            /* Consistent Grand Theme */
-            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
-            color: var(--primary-gold);
-        }
-
-        /* Typography enhancements for Grand Look */
-        .flip-card h3 {
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .card-ornament {
-            font-size: 2rem;
-            margin-bottom: 1.0;
-            color: var(--primary-gold);
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
-        /* Details & Dress Code */
-        .glass-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            height: 100%;
-            transition: transform 0.3s;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-gold);
-        }
-
-        .color-swatch-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 1.5rem;
-            justify-items: center;
-        }
-
-        .color-swatch {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            transition: transform 0.3s;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .color-swatch:hover {
-            transform: scale(1.1);
-        }
-
-        .swatch-label {
-            margin-top: 10px;
-            font-size: 0.8rem;
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        /* Countdown */
-        #countdown {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-        }
-
-        .timer-box {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--primary-gold);
-            padding: 1.5rem;
-            border-radius: 10px;
-            min-width: 100px;
-            margin: 10px;
-            display: inline-block;
-        }
-
-        .timer-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-            font-family: var(--font-serif);
-        }
-
-        /* RSVP Form */
-        .form-control,
-        .form-select {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            border-radius: 8px;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            border-color: var(--primary-gold);
-            box-shadow: none;
-        }
-
-        /* Gallery */
-        .gallery-item {
-            margin-bottom: 20px;
-            overflow: hidden;
-            border-radius: 10px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        /* Media Queries - Mobile Optimization */
-        @media (max-width: 768px) {
-
-            .venue-card {
-                padding: 20px;
-                margin: 20px;
-            }
-
-            .venue-card.cta .btn-gold {
-                width: 250px;
-                background: rgba(0, 0, 0, 0.6);
-                backdrop-filter: blur(5px);
-            }
-
-            #venue {
-                padding: 100px 0;
-            }
-
-            .venue-card.cta {
-                padding: 20px;
-                margin: 20px;
-                background: none;
-                border: 0;
-                backdrop-filter: blur(0);
-            }
-
-            /* Global Layout Adjustments */
-            section {
-                padding: 3rem 0;
-                border-bottom-width: 5px;
-            }
-
-            /* Typography Scaling */
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .hero-date {
-                font-size: 1rem;
-            }
-
-            #venue h1 {
-                font-size: 2.5rem !important;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            /* UI Elements */
-            .btn-gold {
-                padding: 10px 25px;
-                font-size: 0.9rem;
-            }
-
-            .flip-card {
-                width: 90%;
-                max-width: 320px;
-                height: 480px;
-            }
-
-            #invite {
-                padding-bottom: 0;
-            }
-
-            #invite .section-title {
-                margin-bottom: 10px;
-            }
-
-            /* Zodiac & Logo: Static & Centered */
-            .zodiac {
-                position: static;
-                top: auto;
-                left: auto;
-                right: auto;
-                transform: none;
-                display: block;
-                margin: 50px auto 50px auto;
-                width: 50%;
-                text-align: center;
-                pointer-events: auto;
-                /* Allow interaction if needed */
-            }
-
-            .zodiac img {
-                height: auto;
-                width: 100%;
-                opacity: 1;
-                animation: float 4s ease-in-out infinite;
-            }
-
-            /* Timeline Adjustments */
-            .timeline::after {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item.left,
-            .timeline-item.right {
-                left: 0;
-                text-align: left;
-            }
-
-            .timeline-icon {
-                left: 11px;
-                right: auto;
-            }
-
-            .right .timeline-icon {
-                left: 11px;
-            }
-
-            #story {
-                background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.85)), url('siteassets/img/timeline-mobile.JPG');
-                background-size: cover;
-                background-attachment: scroll;
-                /* Better performance on mobile */
-                background-position: center;
-            }
-        }
-
-        /* Utils */
-        .text-gold {
-            color: var(--primary-gold);
-        }
-
-        .success-animation {
-            display: none;
-        }
-
-        /* Confetti */
-        #confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999;
-        }
-
-        /* Heart Animation */
-        .heart-float {
-            position: fixed;
-            bottom: -50px;
-            width: 30px;
-            height: 30px;
-            background: var(--primary-gold);
-            transform: rotate(45deg);
-            animation: floatUp 4s ease-in infinite;
-            pointer-events: none;
-            z-index: 10001;
-        }
-
-        .heart-float::before,
-        .heart-float::after {
-            content: '';
-            width: 30px;
-            height: 30px;
-            background: var(--primary-gold);
-            border-radius: 50%;
-            position: absolute;
-        }
-
-        .heart-float::before {
-            top: -15px;
-            left: 0;
-        }
-
-        .heart-float::after {
-            top: 0;
-            left: -15px;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) rotate(45deg) scale(0.5);
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: translateY(-100vh) rotate(45deg) scale(1);
-                opacity: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="siteassets/scss/style.css">
 </head>
 
 <body>
 
-    <!-- Scroll Progress -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor-dot d-none d-md-block"></div>
-    <div class="cursor-circle d-none d-md-block"></div>
-
-    <!-- Confetti Canvas -->
-    <canvas id="confetti-canvas"></canvas>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -895,76 +54,40 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="container hero-content">
-            <h1 class="hero-title animate-on-load">Santhosh & Vaishnavi</h1>
-            <h2 class="hero-subtitle animate-on-load" style="animation-delay: 0.3s;">Together, We Begin.</h2>
-            <p class="hero-date animate-on-load" style="animation-delay: 0.3s;">Officially Going Live: <br><strong>March
+            <h1 class="hero-title">Santhosh & Vaishnavi</h1>
+            <h2 class="hero-subtitle">Together, We Begin.</h2>
+            <p class="hero-date">Officially Going Live: <br><strong>March
                     5th, 2026</strong>
             </p>
-            <a href="#story" class="d-none btn btn-gold rounded-pill animate-on-load" style="animation-delay: 0.6s;">
+            <a href="#story" class="d-none btn btn-gold rounded-pill">
                 Enter Our Wedding Story &nbsp;<i class="fas fa-arrow-down"></i>
             </a>
         </div>
     </section>
 
-    <!-- Story Timeline -->
-    <section id="story">
-        <div class="container">
-            <h2 class="section-title">A Love Written in Code</h2>
-            <div class="timeline mt-5">
-                <div class="timeline-item left">
-                    <div class="timeline-icon"><i class="fas fa-eye"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Jan 10, 2023</span>
-                        <h4>👀 Strangers, Once.</h4>
-                        <p>“Who’s that?”
-                            Just two people existing in the same universe 🌍✨</p>
-                    </div>
+    <!-- Countdown -->
+    <section id="countdown">
+        <div class="container text-center text-white">
+            <h2 class="mb-4" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">Deployment Begins In...</h2>
+            <div id="countdown-timer">
+                <div class="timer-box">
+                    <div id="days" class="timer-number">00</div>
+                    <div>Days</div>
                 </div>
-                <div class="timeline-item right">
-                    <div class="timeline-icon"><i class="fas fa-comments"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Feb 14, 2023</span>
-                        <h4>🤝 Friends by Chance.</h4>
-                        <p>“Just friends, lol.”
-                            Casual talks 💬 Random laughs 😄 No big deal…
-                            or so we thought.</p>
-                    </div>
+                <div class="timer-box">
+                    <div id="hours" class="timer-number">00</div>
+                    <div>Hours</div>
                 </div>
-                <div class="timeline-item left">
-                    <div class="timeline-icon"><i class="fas fa-mug-hot"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Mar 05, 2023</span>
-                        <h4>🎧 Best Friends by Choice.</h4>
-                        <p>
-                            Somewhere between memes 📱 and midnight calls 🌙📞
-                            same vibe ⚡ same frequency 🎶
-                            No effort — just a little more chaos 😜
-
-                        </p>
-                    </div>
+                <div class="timer-box">
+                    <div id="minutes" class="timer-number">00</div>
+                    <div>Minutes</div>
                 </div>
-                <div class="timeline-item right">
-                    <div class="timeline-icon"><i class="fas fa-ring"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Dec 25, 2025</span>
-                        <h4>❤️ Bonded by Love.</h4>
-                        <p>Friendship found its heartbeat 💓
-                            Hearts synced 🔗<br>
-                            The universe rewrote our story 🌌✨
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-icon"><i class="fas fa-calendar-check"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Mar 05, 2026</span>
-                        <h4>💍 Partners for life</h4>
-                        <p>From “What are we?” 🤔 <br>
-                            to “Okay fine, we’re getting married.” 😌<br><br>
-                            And now, we can’t wait to celebrate the start of our forever with you 🥂✨💕</p>
-                    </div>
+                <div class="timer-box">
+                    <div id="seconds" class="timer-number">00</div>
+                    <div>Seconds</div>
                 </div>
             </div>
+            <p id="countdown-msg" class="mt-4 lead d-none">We are live! 🎉</p>
         </div>
     </section>
 
@@ -1026,7 +149,7 @@
         <div class="container">
             <h2 class="section-title text-gold mb-5">Meet Us Here</h2>
 
-            <div class="venue-card animate-on-load">
+            <div class="venue-card">
                 <h1 class="text-gold mb-2 pt-3" style="font-family: 'Great Vibes', cursive; font-size: 3.5rem;">
                     Sumangali Mahal</h1>
                 <p class="lead mb-3">S.P.H Road, Melnallathur <span class="">( Opp. Caterpillar Gate 3 )</span>
@@ -1034,7 +157,7 @@
 
 
             </div>
-            <div class="row venue-card animate-on-load p-0 cta">
+            <div class="row venue-card p-0 cta">
                 <div class="col-lg-4">
                     <div class="d-flex justify-content-center gap-3 my-3 flex-wrap">
                         <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Santhosh+%26+Vaishnavi+Reception&dates=20260304T180000/20260304T220000&details=Join+us+for+the+Reception+at+Sumangali+Mahal!&location=SUMANGALI+MAHAL,+S.P.H+Road,+Melnallathur,+Thiruvallur,+602002&sf=true&output=xml"
@@ -1094,31 +217,6 @@
         </div>
     </section>
 
-    <!-- Countdown -->
-    <section id="countdown">
-        <div class="container text-center text-white">
-            <h2 class="mb-4" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">Deployment Begins In...</h2>
-            <div id="countdown-timer">
-                <div class="timer-box">
-                    <div id="days" class="timer-number">00</div>
-                    <div>Days</div>
-                </div>
-                <div class="timer-box">
-                    <div id="hours" class="timer-number">00</div>
-                    <div>Hours</div>
-                </div>
-                <div class="timer-box">
-                    <div id="minutes" class="timer-number">00</div>
-                    <div>Minutes</div>
-                </div>
-                <div class="timer-box">
-                    <div id="seconds" class="timer-number">00</div>
-                    <div>Seconds</div>
-                </div>
-            </div>
-            <p id="countdown-msg" class="mt-4 lead d-none">We are live! 🎉</p>
-        </div>
-    </section>
 
     <!-- RSVP -->
     <section id="rsvp" class="d-none">
@@ -1166,7 +264,67 @@
             </div>
         </div>
     </section>
+    <!-- Story Timeline -->
+    <section id="story">
+        <div class="container">
+            <h2 class="section-title">A Love Written in Code</h2>
+            <div class="timeline mt-5">
+                <div class="timeline-item left">
+                    <div class="timeline-icon"><i class="fas fa-eye"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Jan 10, 2023</span>
+                        <h4>👀 Strangers, Once.</h4>
+                        <p>“Who’s that?”
+                            Just two people existing in the same universe 🌍✨</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-icon"><i class="fas fa-comments"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Feb 14, 2023</span>
+                        <h4>🤝 Friends by Chance.</h4>
+                        <p>“Just friends, lol.”
+                            Casual talks 💬 Random laughs 😄 No big deal…
+                            or so we thought.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-icon"><i class="fas fa-mug-hot"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Mar 05, 2023</span>
+                        <h4>🎧 Best Friends by Choice.</h4>
+                        <p>
+                            Somewhere between memes 📱 and midnight calls 🌙📞
+                            same vibe ⚡ same frequency 🎶
+                            No effort — just a little more chaos 😜
 
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-icon"><i class="fas fa-ring"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Dec 25, 2025</span>
+                        <h4>❤️ Bonded by Love.</h4>
+                        <p>Friendship found its heartbeat 💓
+                            Hearts synced 🔗<br>
+                            The universe rewrote our story 🌌✨
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Mar 05, 2026</span>
+                        <h4>💍 Partners for life</h4>
+                        <p>From “What are we?” 🤔 <br>
+                            to “Okay fine, we’re getting married.” 😌<br><br>
+                            And now, we can’t wait to celebrate the start of our forever with you 🥂✨💕</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Gallery -->
     <section id="gallery">
         <div class="container">
@@ -1175,7 +333,7 @@
                 <!-- Placeholder images from Unsplash -->
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="gallery-item">
-                        <img src="siteassets/img/coup1.JPG" alt="Couple 1">
+                        <img src="siteassets/img/coup1.webp" alt="Couple 1">
                         <div class="gallery-overlay">
                             <p class="text-white h5">Where it all started</p>
                         </div>
@@ -1183,7 +341,7 @@
                 </div>
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="gallery-item">
-                        <img src="siteassets/img/coup2.JPG" alt="Couple 1">
+                        <img src="siteassets/img/coup2.webp" alt="Couple 1">
                         <div class="gallery-overlay">
                             <p class="text-white h5">Adventures</p>
                         </div>
@@ -1191,7 +349,7 @@
                 </div>
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="gallery-item">
-                        <img src="siteassets/img/coup3.JPG" alt="Couple 1">
+                        <img src="siteassets/img/coup3.webp" alt="Couple 1">
                         <div class="gallery-overlay">
                             <p class="text-white h5">The Engagement</p>
                         </div>
@@ -1199,7 +357,7 @@
                 </div>
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="gallery-item">
-                        <img src="siteassets/img/coup4.JPG" alt="Couple 1">
+                        <img src="siteassets/img/coup4.webp" alt="Couple 1">
                         <div class="gallery-overlay">
                             <p class="text-white h5">Laughter</p>
                         </div>
@@ -1207,7 +365,7 @@
                 </div>
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="gallery-item">
-                        <img src="siteassets/img/coup5.JPG" alt="Couple 1">
+                        <img src="siteassets/img/coup5.webp" alt="Couple 1">
                         <div class="gallery-overlay">
                             <p class="text-white h5">Together Forever</p>
                         </div>
@@ -1215,7 +373,7 @@
                 </div>
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="gallery-item">
-                        <img src="siteassets/img/coup6.JPG" alt="Couple 1">
+                        <img src="siteassets/img/coup6.webp" alt="Couple 1">
                         <div class="gallery-overlay">
                             <p class="text-white h5">Magical</p>
                         </div>
@@ -1253,172 +411,13 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
-            // 1. Initial Hero Animations
-            setTimeout(function () {
-                $('.hero-title').css({ opacity: 1, transform: 'translateY(0)', transition: 'all 1s ease' });
-            }, 300);
-            setTimeout(function () {
-                $('.hero-subtitle').css({ opacity: 1, transform: 'translateY(0)', transition: 'all 1s ease' });
-            }, 600);
-            setTimeout(function () {
-                $('.hero-date').css({ opacity: 1, transform: 'translateY(0)', transition: 'all 1s ease' });
-            }, 900);
-            setTimeout(function () {
-                $('.btn-gold.animate-on-load').css({ opacity: 1, transform: 'translateY(0)', transition: 'all 1s ease' });
-            }, 1400);
-
-            // 2. Navbar Scroll Effect & Scroll Progress
-            $(window).scroll(function () {
-                // Navbar
-                if ($(this).scrollTop() > 50) {
-                    $('.navbar').addClass('bg-dark').css('padding', '0.5rem 0');
-                } else {
-                    $('.navbar').removeClass('bg-dark').css('padding', '1rem 0');;
-                }
-
-                // Progress Bar
-                var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                var scrolled = (winScroll / height) * 100;
-                $('#scrollProgress').css('width', scrolled + "%");
-
-                // Timeline Animation
-                $('.timeline-item').each(function () {
-                    var bottom_of_object = $(this).offset().top + 50;
-                    var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-                    if (bottom_of_window > bottom_of_object) {
-                        $(this).addClass('visible');
-                    }
-                });
-            });
-
-            // 3. Custom Cursor Follower
-            $(document).on('mousemove', function (e) {
-                $('.cursor-dot').css({ left: e.clientX, top: e.clientY });
-                $('.cursor-circle').css({ left: e.clientX, top: e.clientY });
-            });
-
-            // Grow cursor on interactive elements
-            $('a, button, .flip-card, .gallery-item, .color-swatch').on('mouseenter', function () {
-                $('.cursor-circle').addClass('cursor-hover');
-            }).on('mouseleave', function () {
-                $('.cursor-circle').removeClass('cursor-hover');
-            });
-
-            // 4. Countdown Timer
-            // Target: March 5, 2026 6:30 AM
-            const weddingDate = new Date("March 5, 2026 06:30:00").getTime();
-
-            const timer = setInterval(function () {
-                const now = new Date().getTime();
-                const distance = weddingDate - now;
-
-                if (distance < 0) {
-                    clearInterval(timer);
-                    $('#countdown-timer').addClass('d-none');
-                    $('#countdown-msg').removeClass('d-none');
-                    // Launch confetti
-                    confetti({
-                        particleCount: 150,
-                        spread: 70,
-                        origin: { y: 0.6 }
-                    });
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                $('#days').text(days < 10 ? '0' + days : days);
-                $('#hours').text(hours < 10 ? '0' + hours : hours);
-                $('#minutes').text(minutes < 10 ? '0' + minutes : minutes);
-                $('#seconds').text(seconds < 10 ? '0' + seconds : seconds);
-            }, 1000);
-
-            // 5. RSVP Form Submission
-            $('#rsvpForm').on('submit', function (e) {
-                e.preventDefault();
-                // Simulate processing
-                const btn = $(this).find('button');
-                const originalText = btn.text();
-                btn.prop('disabled', true).text('Sending...');
-
-                setTimeout(function () {
-                    $('#rsvpForm').fadeOut(500, function () {
-                        $('.success-animation').fadeIn();
-                        // Trigger confetti
-                        confetti({
-                            particleCount: 100,
-                            spread: 70,
-                            origin: { y: 0.6 },
-                            colors: ['#d4af37', '#ffffff'] // Gold and White
-                        });
-                    });
-                }, 1500);
-            });
-
-            // 6. Music Toggle
-            const audio = document.getElementById("bgMusic");
-            let isPlaying = false;
-
-            $('#musicToggle').click(function () {
-                if (isPlaying) {
-                    audio.pause();
-                    $(this).html('<i class="fas fa-music"></i>');
-                    $(this).removeClass('btn-warning').addClass('btn-outline-warning');
-                } else {
-                    audio.play().catch(function (e) {
-                        console.log("Audio play failed: ", e);
-                        alert("Please interact with the document first to play audio in some browsers.");
-                    });
-                    $(this).html('<i class="fas fa-pause"></i>');
-                    $(this).removeClass('btn-outline-warning').addClass('btn-warning');
-                }
-                isPlaying = !isPlaying;
-            });
-
-            // 7. Easter Egg: Type "love"
-            let buffer = [];
-            const secretCode = 'love';
-
-            $(document).on('keydown', function (e) {
-                buffer.push(e.key);
-                if (buffer.length > secretCode.length) {
-                    buffer.shift();
-                }
-                if (buffer.join('').toLowerCase() === secretCode) {
-                    // Spawn hearts
-                    for (let i = 0; i < 20; i++) {
-                        setTimeout(() => {
-                            const heart = $('<div class="heart-float"></div>');
-                            heart.css({
-                                left: Math.random() * 100 + 'vw',
-                                animationDuration: (Math.random() * 2 + 3) + 's'
-                            });
-                            $('body').append(heart);
-                            // Remove after animation
-                            setTimeout(() => { heart.remove(); }, 5000);
-                        }, i * 200);
-                    }
-                }
-            });
-
-            // Init Masonry
-            // Note: Masonry needs images to be loaded or dimensions pre-set. 
-            // We use 'imagesLoaded' or just a timeout as a simple fix if strict layout is needed.
-            setTimeout(function () {
-                $('.row[data-masonry]').masonry();
-            }, 1000);
-        });
+    <script src="siteassets/js/main.js">
     </script>
 </body>
 

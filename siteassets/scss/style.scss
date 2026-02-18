@@ -327,9 +327,7 @@ section {
     text-align: center;
     margin-bottom: 3rem;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+
 
     &::after {
         content: '';
@@ -476,11 +474,11 @@ section {
     pointer-events: none;
 
     &.left {
-        left: 5%;
+        left: calc(50% - 500px);
     }
 
     &.right {
-        right: 5%;
+        right: calc(50% - 550px);
     }
 
     img {
@@ -588,7 +586,7 @@ section {
         color: var(--primary-gold);
     }
 
-    /* Typography enhancements for Grand Look */
+
     h3 {
         font-size: 2.5rem;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -654,7 +652,7 @@ section {
 
 /* Countdown */
 #countdown {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?auto=format&fit=crop&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/coup4.webp');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -693,16 +691,39 @@ section {
     }
 }
 
-/* Gallery */
+/* Gallery Masonry */
+.masonry-grid {
+    column-count: 3;
+    column-gap: 1.5rem;
+
+    @media (max-width: 992px) {
+        column-count: 2;
+    }
+
+    @media (max-width: 576px) {
+        column-count: 1;
+    }
+}
+
 .gallery-item {
-    margin-bottom: 20px;
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
     overflow: hidden;
     border-radius: 10px;
     position: relative;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+    }
 
     img {
         width: 100%;
+        display: block;
+        /* Removes bottom space */
         transition: transform 0.5s ease;
     }
 
@@ -710,6 +731,8 @@ section {
         transform: scale(1.05);
     }
 }
+
+
 
 .gallery-overlay {
     position: absolute;

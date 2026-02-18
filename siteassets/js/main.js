@@ -12,7 +12,14 @@ $(document).ready(function () {
     }
     requestAnimationFrame(raf);
 
+    // Connect Lenis to AOS
+    lenis.on('scroll', AOS.refresh);
+
     // Init AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
 
     // 2. Navbar Scroll Effect & Scroll Progress
     $(window).scroll(function () {
@@ -89,5 +96,10 @@ $(document).ready(function () {
             $(this).removeClass('btn-outline-warning').addClass('btn-warning');
         }
         isPlaying = !isPlaying;
+    });
+
+    // Init Jarallax
+    jarallax(document.querySelectorAll('.jarallax'), {
+        speed: 0.5,
     });
 });

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="siteassets/scss/style.css">
 </head>
 
@@ -52,11 +53,11 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero">
+    <section id="hero" class="jarallax">
         <div class="container hero-content">
-            <h1 class="hero-title">Santhosh & Vaishnavi</h1>
-            <h2 class="hero-subtitle">Together, We Begin.</h2>
-            <p class="hero-date">Officially Going Live: <br><strong>March
+            <h1 class="hero-title" data-aos="fade-up">Santhosh & Vaishnavi</h1>
+            <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Together, We Begin.</h2>
+            <p class="hero-date" data-aos="fade-up" data-aos-delay="400">Officially Going Live: <br><strong>March
                     5th, 2026</strong>
             </p>
             <a href="#story" class="d-none btn btn-gold rounded-pill">
@@ -66,9 +67,10 @@
     </section>
 
     <!-- Countdown -->
-    <section id="countdown">
+    <section id="countdown" class="jarallax">
         <div class="container text-center text-white">
-            <h2 class="mb-4" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">Deployment Begins In...</h2>
+            <h2 class="mb-4" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);" data-aos="zoom-in">Deployment Begins In...
+            </h2>
             <div id="countdown-timer">
                 <div class="timer-box">
                     <div id="days" class="timer-number">00</div>
@@ -92,14 +94,15 @@
     </section>
 
     <!-- Invitation Card -->
-    <section id="invite">
-        <h2 class="section-title">You Are Invited</h2>
+    <section id="invite" class="jarallax">
+        <h2 class="section-title" data-aos="fade-up">You Are Invited</h2>
 
         <div class="zodiac left">
-            <img src="siteassets/img/logo.png" class="img-fluid" alt="">
+            <img src="siteassets/img/logo.png" class="img-fluid" alt="" loading="lazy">
         </div>
         <div class="container text-center position-relative">
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000"
+                onclick="this.classList.toggle('flipped')">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <h3>Santhosh</h3>
@@ -111,45 +114,45 @@
                             <p class="mb-1"><strong class="d-block">Reception:</strong> March 4th Wednesday, <span
                                     class="d-block time"> 6 PM Onwards</span></p>
                             <div class="divider">
-                                <img src="siteassets/img/g-divider.png" class="img-fluid w-75">
+                                <img src="siteassets/img/g-divider.png" class="img-fluid w-75" loading="lazy">
                             </div>
                             <p class="mb-0"><strong class="d-block">Muhurtham:</strong> March 5th Thursday, <span
                                     class="d-block time"> 7:30 AM - 9 AM</span></p>
                         </div>
 
-                        <p class="small text-muted mt-auto">Tap to Flip <i class="fas fa-redo ms-1"></i></p>
+                        <p class="small pt-4 mt-auto text-gold">Tap to Flip <i class="fas fa-redo ms-1"></i></p>
                     </div>
                     <div class="flip-card-back">
-                        <h4 class="mb-4">Wedding Ceremony</h4>
-                        <div class="mb-3">
-                            <i class="far fa-calendar-alt fa-2x mb-2 text-gold"></i>
-                            <h5>March 5, 2026</h5>
-                        </div>
-                        <div class="mb-3">
-                            <i class="far fa-clock fa-2x mb-2 text-gold"></i>
-                            <h5>6:30 AM (Muhurtham)</h5>
-                        </div>
+
                         <div>
                             <i class="fas fa-map-marker-alt fa-2x mb-2 text-gold"></i>
-                            <h5>SUMANGALI MAHAL</h5>
+                            <h4 class="text-gold fw-bold">SUMANGALI MAHAL</h4>
                             <p class="small">Thiruvallur</p>
+                            <div class="divider mb-3">
+                                <img src="siteassets/img/g-divider.png" class="img-fluid w-75" loading="lazy">
+                            </div>
+                            <h4 class="p-2">With the blessings of our families, we invite you to celebrate our
+                                wedding
+                            </h4>
+
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="zodiac right">
-            <img src="siteassets/img/zodiac.png" class="img-fluid" alt="">
+            <img src="siteassets/img/zodiac.png" class="img-fluid" alt="" loading="lazy">
         </div>
     </section>
 
     <!-- Venue Section -->
-    <section id="venue">
+    <section id="venue" class="jarallax">
         <div class="container">
-            <h2 class="section-title text-gold mb-5">Meet Us Here</h2>
+            <h2 class="section-title text-gold mb-5" data-aos="fade-up">Meet Us Here</h2>
 
-            <div class="venue-card">
+            <div class="venue-card" data-aos="fade-up" data-aos-delay="200">
                 <h1 class="text-gold mb-2 pt-3" style="font-family: 'Great Vibes', cursive; font-size: 3.5rem;">
                     Sumangali Mahal</h1>
                 <p class="lead mb-3">S.P.H Road, Melnallathur <span class="">( Opp. Caterpillar Gate 3 )</span>
@@ -186,93 +189,15 @@
         </div>
     </section>
 
-    <!-- Dress Code -->
-    <section id="dresscode" class="d-none" style="background-color: #0f0f0f;">
-        <div class="container text-center">
-            <h2 class="section-title">Dress Code: Pastels</h2>
-            <p class="text-muted mb-5">We'd love to see you in soft, lighter shades.</p>
 
-            <div class="color-swatch-grid justify-content-center">
-                <div class="text-center">
-                    <div class="color-swatch" style="background-color: #ffd1dc;"></div>
-                    <div class="swatch-label">Blush Pink</div>
-                </div>
-                <div class="text-center">
-                    <div class="color-swatch" style="background-color: #aec6cf;"></div>
-                    <div class="swatch-label">Pastel Blue</div>
-                </div>
-                <div class="text-center">
-                    <div class="color-swatch" style="background-color: #fdfd96;"></div>
-                    <div class="swatch-label">Cream</div>
-                </div>
-                <div class="text-center">
-                    <div class="color-swatch" style="background-color: #e6e6fa;"></div>
-                    <div class="swatch-label">Lavender</div>
-                </div>
-                <div class="text-center">
-                    <div class="color-swatch" style="background-color: #c1e1c1;"></div>
-                    <div class="swatch-label">Mint</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- RSVP -->
-    <section id="rsvp" class="d-none">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="glass-card p-5">
-                        <h2 class="section-title text-center mb-4">Will You Join Us?</h2>
-                        <form id="rsvpForm">
-                            <div class="mb-3">
-                                <label class="form-label">Your Name</label>
-                                <input type="text" class="form-control" required placeholder="John Doe">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Attending?</label>
-                                    <select class="form-select" required>
-                                        <option value="yes">Yes, Absolutely!</option>
-                                        <option value="family">Yes, with Family</option>
-                                        <option value="no">Sending Love in Spirit</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Number of Guests</label>
-                                    <input type="number" class="form-control" min="1" value="1">
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label">Message for the Couple</label>
-                                <textarea class="form-control" rows="3"
-                                    placeholder="Write something sweet..."></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-gold btn-lg w-100">Send RSVP</button>
-                            </div>
-                        </form>
-
-                        <div class="success-animation text-center mt-4">
-                            <i class="fas fa-check-circle fa-4x text-gold mb-3 animate__animated animate__bounceIn"></i>
-                            <h3>Thank you!</h3>
-                            <p>We are thrilled to have you part of our story ❤️</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Story Timeline -->
-    <section id="story">
+    <section id="story" class="jarallax">
         <div class="container">
-            <h2 class="section-title">A Love Written in Code</h2>
+            <h2 class="section-title" data-aos="fade-down">A Love Written in Code</h2>
             <div class="timeline mt-5">
                 <div class="timeline-item left">
                     <div class="timeline-icon"><i class="fas fa-eye"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Jan 10, 2023</span>
+                    <div class="timeline-content" data-aos="zoom-in-up">
                         <h4>👀 Strangers, Once.</h4>
                         <p>“Who’s that?”
                             Just two people existing in the same universe 🌍✨</p>
@@ -280,8 +205,8 @@
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-icon"><i class="fas fa-comments"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Feb 14, 2023</span>
+                    <div class="timeline-content" data-aos="zoom-in-up">
+
                         <h4>🤝 Friends by Chance.</h4>
                         <p>“Just friends, lol.”
                             Casual talks 💬 Random laughs 😄 No big deal…
@@ -290,8 +215,7 @@
                 </div>
                 <div class="timeline-item left">
                     <div class="timeline-icon"><i class="fas fa-mug-hot"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Mar 05, 2023</span>
+                    <div class="timeline-content" data-aos="zoom-in-up">
                         <h4>🎧 Best Friends by Choice.</h4>
                         <p>
                             Somewhere between memes 📱 and midnight calls 🌙📞
@@ -303,8 +227,7 @@
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-icon"><i class="fas fa-ring"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Dec 25, 2025</span>
+                    <div class="timeline-content" data-aos="zoom-in-up">
                         <h4>❤️ Bonded by Love.</h4>
                         <p>Friendship found its heartbeat 💓
                             Hearts synced 🔗<br>
@@ -314,8 +237,7 @@
                 </div>
                 <div class="timeline-item left">
                     <div class="timeline-icon"><i class="fas fa-calendar-check"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Mar 05, 2026</span>
+                    <div class="timeline-content" data-aos="zoom-in-up">
                         <h4>💍 Partners for life</h4>
                         <p>From “What are we?” 🤔 <br>
                             to “Okay fine, we’re getting married.” 😌<br><br>
@@ -328,56 +250,31 @@
     <!-- Gallery -->
     <section id="gallery">
         <div class="container">
-            <h2 class="section-title">Captured Moments</h2>
-            <div class="row" data-masonry='{"percentPosition": true }'>
-                <!-- Placeholder images from Unsplash -->
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="siteassets/img/coup1.webp" alt="Couple 1">
-                        <div class="gallery-overlay">
-                            <p class="text-white h5">Where it all started</p>
-                        </div>
-                    </div>
+            <h2 class="section-title" data-aos="fade-up">Captured Moments</h2>
+            <div class="masonry-grid">
+                <!-- Image 1 -->
+                <div class="gallery-item" data-aos="fade-up">
+                    <img src="siteassets/img/coup1.webp" alt="Couple 1" loading="lazy">
                 </div>
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="siteassets/img/coup2.webp" alt="Couple 1">
-                        <div class="gallery-overlay">
-                            <p class="text-white h5">Adventures</p>
-                        </div>
-                    </div>
+                <!-- Image 2 -->
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="siteassets/img/coup2.webp" alt="Couple 2" loading="lazy">
                 </div>
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="siteassets/img/coup3.webp" alt="Couple 1">
-                        <div class="gallery-overlay">
-                            <p class="text-white h5">The Engagement</p>
-                        </div>
-                    </div>
+                <!-- Image 3 -->
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="siteassets/img/coup3.webp" alt="Couple 3" loading="lazy">
                 </div>
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="siteassets/img/coup4.webp" alt="Couple 1">
-                        <div class="gallery-overlay">
-                            <p class="text-white h5">Laughter</p>
-                        </div>
-                    </div>
+                <!-- Image 4 -->
+                <div class="gallery-item" data-aos="fade-up">
+                    <img src="siteassets/img/coup4.webp" alt="Couple 4" loading="lazy">
                 </div>
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="siteassets/img/coup5.webp" alt="Couple 1">
-                        <div class="gallery-overlay">
-                            <p class="text-white h5">Together Forever</p>
-                        </div>
-                    </div>
+                <!-- Image 5 -->
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="siteassets/img/coup5.webp" alt="Couple 5" loading="lazy">
                 </div>
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="siteassets/img/coup6.webp" alt="Couple 1">
-                        <div class="gallery-overlay">
-                            <p class="text-white h5">Magical</p>
-                        </div>
-                    </div>
+                <!-- Image 6 -->
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="siteassets/img/coup6.webp" alt="Couple 6" loading="lazy">
                 </div>
             </div>
         </div>
@@ -386,18 +283,19 @@
     <!-- Personal Note -->
     <section id="note" class="bg-dark">
         <div class="container text-center" style="max-width: 700px;">
-            <i class="fas fa-quote-left fa-2x text-gold mb-4 opacity-50"></i>
-            <h3 style="line-height: 1.8; font-style: italic;">"From strangers to soulmates, from 'Hi' to 'Forever' — we
+            <i class="fas fa-quote-left fa-2x text-gold mb-4 opacity-50" data-aos="fade-up"></i>
+            <h3 style="line-height: 1.8; font-style: italic;" data-aos="fade-up" data-aos-delay="100">"From strangers to
+                soulmates, from 'Hi' to 'Forever' — we
                 invite you to bless our new beginning."</h3>
-            <p class="mt-4 text-muted">- Santhosh & Vaishnavi</p>
+            <p class="mt-4 text-muted" data-aos="fade-up" data-aos-delay="200">- Santhosh & Vaishnavi</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="py-4 text-center border-top border-dark">
         <div class="container">
-            <p class="mb-0 text-muted small">&copy; 2026 Santhosh & Vaishnavi. Built with <i
-                    class="fas fa-heart text-danger"></i> for Love.</p>
+            <p class="mb-0  small text-gold">&copy; 2026 Santhosh & Vaishnavi. Built with <i
+                    class="fas fa-heart text-gold"></i> for Love.</p>
         </div>
     </footer>
 
@@ -417,6 +315,7 @@
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/jarallax@2/dist/jarallax.min.js"></script>
     <script src="siteassets/js/main.js">
     </script>
 </body>

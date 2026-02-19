@@ -1,19 +1,22 @@
 $(document).ready(function () {
     // Init Lenis Smooth Scroll
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smooth: true,
-    });
+    // Init Lenis Smooth Scroll (Desktop Only)
+    if (window.innerWidth > 768) {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true,
+        });
 
-    function raf(time) {
-        lenis.raf(time);
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
 
-    // Connect Lenis to AOS
-    lenis.on('scroll', AOS.refresh);
+        // Connect Lenis to AOS
+        lenis.on('scroll', AOS.refresh);
+    }
 
     // Init AOS
     AOS.init({

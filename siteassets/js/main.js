@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // Init Lenis Smooth Scroll
     // Init Lenis Smooth Scroll (Desktop Only)
-    if (window.innerWidth > 768) {
+    if (typeof Lenis !== 'undefined' && window.innerWidth > 768) {
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -102,7 +102,9 @@ $(document).ready(function () {
     });
 
     // Init Jarallax
-    jarallax(document.querySelectorAll('.jarallax'), {
-        speed: 0.5,
-    });
+    if (typeof jarallax !== 'undefined') {
+        jarallax(document.querySelectorAll('.jarallax'), {
+            speed: 0.5,
+        });
+    }
 });
